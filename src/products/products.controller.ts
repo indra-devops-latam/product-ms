@@ -29,7 +29,7 @@ export class ProductsController {
   }
 
   // @Patch(':id')
-  @MessagePattern({ cmd: 'update_product' })
+  @MessagePattern('update_product')
   update(
     @Payload() updateProductDto: UpdateProductDto,
   ) {
