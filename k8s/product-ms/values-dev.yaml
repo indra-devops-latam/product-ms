@@ -1,0 +1,19 @@
+replicaCount: 1
+
+env:
+  - name: NODE_ENV
+    value: "development"
+  - name: PORT
+    value: "3000"
+  - name: NATS_SERVERS
+    value: "nats://nats.nats.svc.cluster.local:4222"
+  - name: DATABASE_URL
+    value: "file:./dev.db"
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 300m
+    memory: 256Mi
