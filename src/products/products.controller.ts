@@ -10,19 +10,19 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   // @Post()
-  @MessagePattern({ cmd: 'create_product' })
+  @MessagePattern('create_product')
   create(@Payload() createProductDto: CreateProductDto) {
     return this.productsService.create(createProductDto);
   }
 
   // @Get()
-  @MessagePattern({ cmd: 'find_all_products' })
+  @MessagePattern('find_all_products')
   findAll(@Payload() paginationDto: PaginationDto) {
     return this.productsService.findAll(paginationDto);
   }
 
   // @Get(':id')
-  @MessagePattern({ cmd: 'find_one_product' })
+  @MessagePattern('find_one_product')
   findOne(@Payload('id', ParseIntPipe) id: number) {
     // { id: 1
     return this.productsService.findOne(id);
@@ -39,12 +39,12 @@ export class ProductsController {
   }
 
   // @Delete(':id')
-  @MessagePattern({ cmd: 'delete_product' })
+  @MessagePattern('delete_product')
   remove(@Payload('id', ParseIntPipe) id: number) {
     return this.productsService.remove(id);
   }
 
-  @MessagePattern({ cmd: 'validate_products' })
+  @MessagePattern('validate_products')
   validateProduct( @Payload() ids: number[] ) {
     return this.productsService.validateProducts(ids);
   }
